@@ -4,21 +4,21 @@
 
 class sentry::python(){
 
-    $packages = ["python2.7", "python-dev", "python-setuptools"]
+    $packages = ["python2.7", "python-dev", "python-setuptools","python-virtualenv", "python-pip"]
 
     package{$packages:
         ensure => installed,
     }
 
-    exec{'pip_install':
-        command => 'sudo easy_install pip',
-        require => Package[$packages]
-    }
+#    exec{'pip_install':
+#        command => 'sudo easy_install pip',
+#        require => Package[$packages]
+#    }
 
-    exec{'virtualenv_install':
-        command => 'sudo easy_install virtualenv',
-        require => Package[$packages]
-    }
+#    exec{'virtualenv_install':
+#        command => 'sudo easy_install virtualenv',
+#        require => Package[$packages]
+#    }
 }
 
 class sentry::install($password="test", $salt="bf13c0"){
